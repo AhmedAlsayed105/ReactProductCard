@@ -1,8 +1,8 @@
 export interface IApiData 
 {
-    id:number
+    id?:number
     title:string
-    price:number
+    price:string
     description:string,
     color:string[]
     image: string
@@ -10,4 +10,11 @@ export interface IApiData
         name:string
         image: string
     }
+}
+export interface formInputsType 
+{
+    id:string
+    name:"image"|"price"|"description"|"title"
+    label:string
+    type:string 
 }

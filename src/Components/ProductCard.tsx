@@ -45,7 +45,7 @@ const ProductCard = ({ products }: Iproduct) => {
         />
       </div>
       <div className="flex gap-1 mt-2 mb-0 text-white">
-        <Buttons classNameSide="bg-purple-600" onClick={() => alert("Hi")}>
+        <Buttons classNameSide="bg-purple-600" >
           Edit
         </Buttons>
         <Buttons classNameSide="bg-red-500">Delete</Buttons>
