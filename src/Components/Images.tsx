@@ -7,6 +7,8 @@ interface Iimg extends ImgHTMLAttributes<HTMLImageElement> {
 }
 
 const Images = ({imgUrl,className,alt,...res}: Iimg) => {
+  // console.log(imgUrl);
+  
   return (
     <img className={`${className } ` } alt={alt} {...res} src={imgUrl} />
   )

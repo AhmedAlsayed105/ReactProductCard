@@ -1,21 +1,47 @@
 import { IApiData } from "./Data/typeData";
 import Images from "./Images";
 import Buttons from "./Ui/Buttons";
-import { textSlice } from "./Ui/textSlice";
+import { numberWithCommas, textSlice } from "./Ui/textSlice";
 
 interface Iproduct {
   products: IApiData;
+  setEditModelOnclickFullData:(setEditModelIsOpen:IApiData)=>void;
+  openModalEdit:()=>void;
+  index:number;
+  setProductIndex:(value:number)=>void;
+  OpenPopeUpDelete:()=> void;
 }
 
-const ProductCard = ({ products }: Iproduct) => {
+
+const ProductCard = ({ products,setEditModelOnclickFullData,openModalEdit ,index,setProductIndex,OpenPopeUpDelete}: Iproduct) => {
   // console.log(products);
   const { title, description, price, color, image, category } = products;
+// console.log(setProductIndex(index));
 
   // productList
+// console.log(color);
+  function FnModelEdit(){
+    setEditModelOnclickFullData(products);
+    openModalEdit()
+    //setIndex
+    setProductIndex(index) 
 
+  }
+
+  function OpenPopeUpDel(){
+    setEditModelOnclickFullData(products);
+    OpenPopeUpDelete()
+    //setIndex
+    // setProductIndex(index) 
+
+  }
+  
+  // function fn(){
+  //   console.log("products");
+  // }
   return (
-    <div className="  shadow-lg shadow-blue-500/20  max-w-sm mx-auto border p-2 rounded-md flex flex-col ">
-      <div className="   w-[200px]	h-[200px]  rounded-md  mx-4">
+    <div className="  shadow-lg shadow-blue-500/20  max-w-sm mx-auto border p-2 rounded-md flex flex-col justify-around ">
+      <div className="   	h-[200px]  rounded-md  mx-4">
         <Images
           className="w-full	 h-full object-contain 	rounded-md   "
           imgUrl={image}
@@ -36,19 +62,22 @@ const ProductCard = ({ products }: Iproduct) => {
         ))}
       </div>
       <div className=" flex justify-between my-2 items-center">
-        <span className="font-medium ">${price}</span>
+        <span className="font-medium ">${numberWithCommas(price)}</span>
         <Images
           className="w-10 h-10 rounded-full object-bottom border border-sky-600"
-          imgUrl={image}
-          alt="product-photo"
+          imgUrl={category.image}
+          alt={category.name}
           
         />
       </div>
       <div className="flex gap-1 mt-2 mb-0 text-white">
-        <Buttons classNameSide="bg-purple-600" >
+        <Buttons classNameSide="bg-purple-600"  onClick={()=>{
+          FnModelEdit()
+          
+        }} >
           Edit
         </Buttons>
-        <Buttons classNameSide="bg-red-500">Delete</Buttons>
+        <Buttons onClick={()=> OpenPopeUpDel()} classNameSide="bg-red-500">Delete</Buttons>
       </div>
     </div>
   );

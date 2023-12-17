@@ -1,5 +1,7 @@
 const  FormProductValidation = (product: {title: string;price: string;description: string;image: string;}) => 
 {
+  // console.log(product);
+  
   const erro:{title: string;price: string;description: string;image: string;} =
    {
     title: "",
@@ -23,6 +25,9 @@ const  FormProductValidation = (product: {title: string;price: string;descriptio
   if(!product.price.trim() ||  isNaN(Number(product.price)) ){
     erro.price = "valid Price ia required"
   }
+  // if (product.color.length === 0) {
+  //   erro.color = "At least one valid color is required";
+  // }
   return erro
 }
 export default FormProductValidation

@@ -1,6 +1,8 @@
+import { nameProductEdit } from "../type/type"
+
 export interface IApiData 
 {
-    id?:number
+    id?:string
     title:string
     price:string
     description:string,
@@ -14,7 +16,13 @@ export interface IApiData
 export interface formInputsType 
 {
     id:string
-    name:"image"|"price"|"description"|"title"
+    name:nameProductEdit
     label:string
     type:string 
 }
+export interface ICategory {
+    id: string;
+    name: string;
+    image: string;
+  }
+  
